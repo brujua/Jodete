@@ -4,12 +4,15 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 public class MazoCartasEspañol {
+	
+	private static final int POS_DECK_TOP = 0;
+	
 	private ArrayList<Carta> mazo;
 	
 	public MazoCartasEspañol(){
 		mazo = new ArrayList<>();
 		for(Palo palo:Palo.values()){
-			for(int i=1;i<12;i++){
+			for(int i=1;i<=12;i++){
 				mazo.add(new Carta(i, palo));
 			}
 		}
@@ -19,16 +22,31 @@ public class MazoCartasEspañol {
 	public void mezclar(){
 		Collections.shuffle(mazo);
 	}
+	public boolean isEmpty(){
+		return mazo.isEmpty();
+	}
+	
+	
+	public Carta dealCard () throws EmptyDeckException{
+		if(isEmpty())
+			throw new EmptyDeckException();
+		return mazo.remove(POS_DECK_TOP).copy();
+	}
+	
+	public int cardsLeft(){
+		return mazo.size();
+	}
+	
+
 	@Override
 	public String toString(){
-		//TODO  es un asco este toString
-		String str = new String();
+		StringBuilder strB = new StringBuilder();
 		for(Carta carta:mazo){
-			str= str +""
-					+ ""+ carta.toString();
+			strB.append(carta.toString()+System.getProperty("line.separator"));
 		}
-		return str;
+		return strB.toString();
 	}
+	
 	public static void main(String[] args) {
 		MazoCartasEspañol mazo = new MazoCartasEspañol();
 		System.out.println("Hooola");

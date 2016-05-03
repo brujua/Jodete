@@ -1,6 +1,6 @@
 package modelo;
 
-public class Carta {
+public class Carta{
 	private Palo palo;
 	private int numero;
 	
@@ -8,6 +8,16 @@ public class Carta {
 		super();
 		numero = nro;
 		this.palo=palo;
+	}
+	// constructor de copias
+	public Carta(Carta original){
+		super();
+		numero = original.getNumero();
+		palo = original.getPalo();
+	}
+	
+	public Carta copy(){
+		return new Carta(this);
 	}
 
 	public Palo getPalo() {
@@ -27,6 +37,6 @@ public class Carta {
 	public String toString() {
 		return numero+" de "+ palo.toString();
 	}
-	
+		
 	
 }
