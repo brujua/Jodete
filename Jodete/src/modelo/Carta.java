@@ -1,8 +1,8 @@
 package modelo;
 
 public class Carta {
-	public Palo palo;
-	int numero;
+	private Palo palo;
+	private int numero;
 	
 	public Carta(int nro, Palo palo){
 		super();
