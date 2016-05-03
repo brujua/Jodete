@@ -1,15 +1,16 @@
 package modelo;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 
-public class MazoCartasEspañol {
+public class SpanishDeck {
 	
 	private static final int POS_DECK_TOP = 0;
 	
 	private ArrayList<Carta> mazo;
 	
-	public MazoCartasEspañol(){
+	public SpanishDeck(){
 		mazo = new ArrayList<>();
 		for(Palo palo:Palo.values()){
 			for(int i=1;i<=12;i++){
@@ -17,6 +18,12 @@ public class MazoCartasEspañol {
 			}
 		}
 		mezclar();
+	}
+	
+	public void reInit(Carta[] newDeck){
+		if(newDeck == null|| newDeck.length==0)
+			throw new NullPointerException();
+		mazo = new ArrayList<Carta>(Arrays.asList(newDeck));
 	}
 	
 	public void mezclar(){
@@ -47,9 +54,15 @@ public class MazoCartasEspañol {
 		return strB.toString();
 	}
 	
-	public static void main(String[] args) {
+	/*public static void main(String[] args) {
 		MazoCartasEspañol mazo = new MazoCartasEspañol();
 		System.out.println("Hooola");
 		System.out.println(mazo.toString());
-	}
+		try {
+			System.out.println(mazo.dealCard().toString());
+		} catch (EmptyDeckException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}*/
 }
