@@ -6,49 +6,49 @@ import java.util.Collections;
 
 public class SpanishDeck {
 	
-	private static final int POS_DECK_TOP = 0;
+private static final int POS_DECK_TOP = 0;
 	
-	private ArrayList<Carta> mazo;
+	private ArrayList<Card> deck;
 	
 	public SpanishDeck(){
-		mazo = new ArrayList<>();
+		deck = new ArrayList<>();
 		for(Palo palo:Palo.values()){
 			for(int i=1;i<=12;i++){
-				mazo.add(new Carta(i, palo));
+				deck.add(new Card(i, palo));
 			}
 		}
 		mezclar();
 	}
 	
-	public void reInit(Carta[] newDeck){
+	public void reInit(Card[] newDeck){
 		if(newDeck == null|| newDeck.length==0)
 			throw new NullPointerException();
-		mazo = new ArrayList<Carta>(Arrays.asList(newDeck));
+		deck = new ArrayList<Card>(Arrays.asList(newDeck));
 	}
 	
 	public void mezclar(){
-		Collections.shuffle(mazo);
+		Collections.shuffle(deck);
 	}
 	public boolean isEmpty(){
-		return mazo.isEmpty();
+		return deck.isEmpty();
 	}
 	
 	
-	public Carta dealCard () throws EmptyDeckException{
+	public Card dealCard () throws EmptyDeckException{
 		if(isEmpty())
 			throw new EmptyDeckException();
-		return mazo.remove(POS_DECK_TOP).copy();
+		return deck.remove(POS_DECK_TOP).copy();
 	}
 	
 	public int cardsLeft(){
-		return mazo.size();
+		return deck.size();
 	}
 	
 
 	@Override
 	public String toString(){
 		StringBuilder strB = new StringBuilder();
-		for(Carta carta:mazo){
+		for(Card carta:deck){
 			strB.append(carta.toString()+System.getProperty("line.separator"));
 		}
 		return strB.toString();

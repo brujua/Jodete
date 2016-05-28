@@ -1,23 +1,23 @@
 package modelo;
 
-public class Carta{
+public class Card{
 	private Palo palo;
 	private int numero;
 	
-	public Carta(int nro, Palo palo){
+	public Card(int nro, Palo palo){
 		super();
 		numero = nro;
 		this.palo=palo;
 	}
 	// constructor de copias
-	public Carta(Carta original){
+	public Card(Card original){
 		super();
 		numero = original.getNumero();
 		palo = original.getPalo();
 	}
 	
-	public Carta copy(){
-		return new Carta(this);
+	public Card copy(){
+		return new Card(this);
 	}
 
 	public Palo getPalo() {
